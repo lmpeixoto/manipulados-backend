@@ -49,8 +49,6 @@ app.use(cors());
 
 app.use(cookieParser());
 
-// app.use(csrfProtection);
-
 app.use('/', utilsRoutes);
 
 app.use('/auth', authRoutes);
