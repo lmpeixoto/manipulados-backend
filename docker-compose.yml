@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+    nodejs:
+        image: node
+        ports:
+            - 3000:3000
+            - 9229:9229
+        volumes:
+            - /home/lmpeixoto/dev/manipulados:/home/node/code
+        user: root
+        links:
+            - mongo
+    mongo:
+        container_name: mongo
+        image: mongo
+        volumes:
+            - /home/lmpeixoto/dev/manipulados/data/:/home/node/code/data
+        ports:
+            - 27017:27017
