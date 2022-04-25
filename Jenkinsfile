@@ -12,14 +12,15 @@ pipeline {
             }
         }
         stage('SonarQube analysis') {
+            environment {
+                scannerHome = tool 'SonarQube_4.3.0'
+            }
             steps {
-                script {
-                    def scannerHome = tool 'sonarscan';
-                    withSonarQubeEnv('sonarqube') {
-                        sh "${tool("sonarscan ")}/bin/sonar-scanner -Dsonar.projectKey=reactapp -Dsonar.projectName=reactapp"
-                    }
+                withSonarQubeEnv('Your Sonar Server Name here') {
+                    sh "${scannerHome}/bin/sonar-scanner"
                 }
-      }
+            }
+    }
     }
     }
 }
